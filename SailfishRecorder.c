@@ -191,6 +191,7 @@ int main(int argc, const char **argv)
 	unsigned char image[context->width][context->height][3];
 	unsigned int offset = fix_info.line_length + info.xoffset * 4;
 	struct timespec start={0,0}, end={0,0}, zzz={0,0};
+	printf("Recording... ");
 	while(running)
 	{
 		clock_gettime(CLOCK_MONOTONIC, &start);
@@ -222,6 +223,7 @@ int main(int argc, const char **argv)
 	outbuf[2] = 0x01;
 	outbuf[3] = 0xb7;
 	fwrite(outbuf, 1, 4, file);
+	printf("Done! Have a nice day.\n");
 	// Clean up everything
 	close(fd);
 	fclose(file);
